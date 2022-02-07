@@ -5,7 +5,7 @@ export default {
     return await apiClient.get('/');
   },
 
-  async getAllElems(item = 'people') {
+  async getAllElems(item = 'planets') {
     let i = 1;
     let allElements = []
     let currentPage
@@ -17,7 +17,6 @@ export default {
       }
       i++;
     } while (currentPage.data.next);
-  console.log(allElements)
     return allElements;
   },
 

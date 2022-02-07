@@ -1,21 +1,26 @@
 <script setup>
 import StarwarsService from "../services/module/starwars"
 import {onMounted,inject} from 'vue'
+import { useRoute } from 'vue-router'
 const { state, setStateProp, getStateProp } = inject("state");
 
 onMounted(async () => {
    
-   const allElems = await StarwarsService.getAllElems('planets')
-   setStateProp("planets", allElems)
+   const route = useRoute();
+   const item = route.params.name;
+   const allElems = await StarwarsService.getAllElems(item)
+   setStateProp(item, allElems)
    console.log(allElems)
-
+   
 })
+
+
 
 
 </script>
 
 <template>
-{{name2}}
+Name: {{ this.$route.params.name }}
 </template>
 
 <style>
