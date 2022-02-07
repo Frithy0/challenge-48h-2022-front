@@ -7,6 +7,12 @@ const routes = [
         name: 'Home',
         component: Home,
     },
+    {
+        path: '/cat/:name',
+        name: 'Categorie',
+        component: Home,
+    },
+
 
 ];
 
