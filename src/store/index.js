@@ -1,10 +1,14 @@
 import { reactive } from "vue";
 
 const store = reactive({
-  categories: {},
+  categories: {}
 });
 
 const setStateProp = (propName, newValue) => {
   store[propName] = newValue;
 };
-export default { state: store, setStateProp };
+
+const getStateProp = (propName) => {
+  return JSON.parse(JSON.stringify(store[propName]));
+};
+export default { state: store, setStateProp, getStateProp };

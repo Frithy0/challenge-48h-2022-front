@@ -1,10 +1,10 @@
 <script setup>
 import StarwarsService from "../services/module/starwars"
 import {onMounted,inject} from 'vue'
-const { state, setStateProp } = inject("state");
+const { state, setStateProp, getStateProp } = inject("state");
 onMounted(async () => {
    const categories = await StarwarsService.getCategories()
-    setStateProp("categories", categories.data)
+   setStateProp("categories", categories.data)  
 })
 </script>
 
