@@ -17,7 +17,7 @@ onMounted(async () => {
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li v-for="(value, key) in getStateProp('categories')"><a href="#" class="nav-link px-2 link-secondary">{{key}}</a></li>
+        <li v-for="(value, key) in getStateProp('categories')"><a href="#" class="nav-link px-2 link-secondary">{{key.toUpperCase()}}</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
