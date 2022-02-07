@@ -1,7 +1,7 @@
 import { reactive } from "vue";
 
 const store = reactive({
-  toto: "",
+  categories: {},
 });
 
 const setStateProp = (propName, newValue) => {

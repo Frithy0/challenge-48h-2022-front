@@ -1,11 +1,14 @@
 <script setup>
-
+import Navbar from './components/Navbar.vue'
 </script>
 
 <template>
-<h1>toto</h1>
+<Navbar/>
  <router-view />
 </template>
 
 <style>
+#app {
+  margin: 0;
+}
 </style>
