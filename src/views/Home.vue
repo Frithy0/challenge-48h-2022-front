@@ -5,17 +5,14 @@ import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 const { state, setStateProp, getStateProp } = inject("state");
 const inputText = ref("");
-const allElems = ref([])
+const allElems = ref([]);
 
 
 onMounted(async () => {
    
    const route = useRoute();
    const routeName = route.params.name;
-   
    allElems.value = await StarwarsService.getAllElems(routeName)
-   // console.log(data)
-   // allElems.value = data
    setStateProp(routeName, allElems)
    console.log(allElems);
 })
@@ -30,23 +27,20 @@ onUpdated(async () => {
 
 </script>
 
-<template>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+<template>  
   <div id="logo"></div>
 
   <input class="search_bar" v-model="inputText" type="text">
 
   <container class="cont">
     <div class="flip-card" v-if="allElems.length>0" v-for="item in allElems">
+    <!-- <p v-if="item.includes(inputText)"> -->
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <li class="list-group-item"> {{ item.name || item.title}} </li>
+          <h3 class="list-group-item"> {{ item.name || item.title}} </h3>
         </div>
         <div class="flip-card-back">
           <h3>Infos</h3>
-          <ul class="list-group list-group-flush">
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Height : ' + item.height+ " cm"}}</li>
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Gender : ' + item.gender}}</li>
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Eye color : ' + item.eye_color}}</li>
@@ -78,10 +72,9 @@ onUpdated(async () => {
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Length : ' + item.length + " m"  }}</li>
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Number of passengers : ' + item.passengers + " peoples" }}</li>
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Manufacturer : ' + item.manufacturer  }}</li>
-            
-          </ul>
         </div>
       </div>
+      <!-- </p> -->
     </div>
   </container>
 </template>
@@ -100,10 +93,12 @@ onUpdated(async () => {
 .cont{
   display:flex;
   width: 80%;
+  height: auto;
   justify-content:space-around;
   flex-wrap: wrap;
   margin-left: 10%;
   text-align: center;
+  border-radius: 10px;
 }
 
 .flip-card{
@@ -112,8 +107,14 @@ onUpdated(async () => {
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  width: auto;
   perspective: 1000px;
+}
+
+.list-group-item{
+  background-color: black;
+  color: #00FFEF;
+  border-radius: 15%;
 }
 
 .flip-card-inner {
@@ -135,18 +136,32 @@ onUpdated(async () => {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  border-radius: 7%;
+  border: solid 0.3em;
+  border-color: yellow;
+  border-radius: 10%;
 }
 
 .flip-card-front {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: #00FFEF;
+}
+
+.flip-card-front h3{
+  color: white;
+  top: 25%;
 }
 
 .flip-card-back {
-  background-color: orange;
-  color: black;
+  background-color: black;
+  color: #00FFEF;
   transform: rotateY(180deg);
+  height: auto;
+  border-radius: 7%;
 }
 
+h3{
+  color: white;
+}
 
 </style>

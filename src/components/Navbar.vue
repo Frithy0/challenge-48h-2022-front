@@ -28,3 +28,9 @@ onMounted(async () => {
     </header>
     </div>
 </template>
+
+<style>
+body{
+  background: url(src/assets/SWFond.jpg);
+}
+</style>

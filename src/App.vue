@@ -12,5 +12,7 @@ import Navbar from './components/Navbar.vue'
   margin: 0;
 }
 
-
+body{
+  background: url(src/assets/SWFond.jpg);
+}
 </style>
