@@ -1,10 +1,12 @@
 <script setup>
 import StarwarsService from "../services/module/starwars"
 import {onMounted,inject} from 'vue'
+import { useRoute } from 'vue-router'
 const { state, setStateProp, getStateProp } = inject("state");
+
 onMounted(async () => {
-   const categories = await StarwarsService.getCategories()
-   setStateProp("categories", categories.data)  
+  const categories = await StarwarsService.getCategories()
+  setStateProp("categories", categories.data) 
 })
 </script>
 
@@ -17,7 +19,7 @@ onMounted(async () => {
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li v-for="(value, key) in getStateProp('categories')"><a href="#" class="nav-link px-2 link-secondary">{{key.toUpperCase()}}</a></li>
+        <router-link :to="'/cat/' + key" v-for="(value, key) in getStateProp('categories')"><a href="#" class="nav-link px-2 link-secondary">{{key.toUpperCase()}}</a></router-link>
       </ul>
 
       <div class="col-md-3 text-end">
