@@ -1,31 +1,48 @@
 <script setup>
 import StarwarsService from "../services/module/starwars"
+import apiClient from "../services/http-comon";
 import {onMounted,inject,onUpdated} from 'vue'
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 const { state, setStateProp, getStateProp } = inject("state");
 const inputText = ref("");
-const allElems = ref([])
+
+const route = useRoute();
+const routeName = route.params.name;
+
+let lastRoute = routeName || 'people'
 
 
-onMounted(async () => {
-   
-   const route = useRoute();
-   const routeName = route.params.name;
-   
-   allElems.value = await StarwarsService.getAllElems(routeName)
-   // console.log(data)
-   // allElems.value = data
-   setStateProp(routeName, allElems)
-   console.log(allElems);
+let allElements = ref([])
+
+
+async function getAllElems(item) {
+    let i = 1;
+    let currentPage
+    allElements.value = []
+    do {
+      currentPage = await apiClient.get('/' + item + '/?page=' + i);
+      for (const elem of currentPage.data.results) {
+        allElements.value.push(elem)
+      }
+
+      i++;
+    } while (currentPage.data.next);
+  return true
+}
+
+onMounted(() => {
+  getAllElems(lastRoute)
 })
 
-onUpdated(async () => {
+onUpdated(() => {
   const route = useRoute();
-   const routeName = route.params.name;
-
-  allElems.value = await StarwarsService.getAllElems(routeName)
-   setStateProp(routeName, allElems)
+  const routeName = route.params.name;
+  if (routeName != lastRoute){
+    lastRoute = routeName
+    getAllElems(routeName)
+  }
+  
 })
 
 </script>
@@ -39,7 +56,7 @@ onUpdated(async () => {
   <input class="search_bar" v-model="inputText" type="text">
 
   <container class="cont">
-    <div class="flip-card" v-if="allElems.length>0" v-for="item in allElems">
+    <div class="flip-card" v-if="allElements.length" v-for="item in allElements">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <li class="list-group-item"> {{ item.name || item.title}} </li>
