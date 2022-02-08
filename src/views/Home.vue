@@ -6,16 +6,26 @@ import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 const { state, setStateProp, getStateProp } = inject("state");
 const inputText = ref("");
-const allElems = ref([]);
+const route = useRoute();
+const routeName = route.params.name;
+let lastRoute = routeName || 'people'
+let allElements = ref([])
 
+async function getAllElems(item) {
+    let i = 1;
+    let currentPage
+    do {
+      currentPage = await apiClient.get('/' + item + '/?page=' + i);
+      for (const elem of currentPage.data.results) {
+        allElements.value.push(elem)
+      }
+      i++;
+    } while (currentPage.data.next);
+  return true
+}
 
-onMounted(async () => {
-   
-   const route = useRoute();
-   const routeName = route.params.name;
-   allElems.value = await StarwarsService.getAllElems(routeName)
-   setStateProp(routeName, allElems)
-   console.log(allElems);
+onMounted(() => {
+  getAllElems(lastRoute)
 })
 
 onUpdated(() => {
@@ -23,27 +33,30 @@ onUpdated(() => {
   const routeName = route.params.name;
   if (routeName != lastRoute){
     lastRoute = routeName
+    allElements.value = []
     getAllElems(routeName)
   }
   
 })
-
 </script>
 
-<template>  
+<template>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
   <div id="logo"></div>
 
   <input class="search_bar" v-model="inputText" type="text">
 
   <container class="cont">
-    <div class="flip-card" v-if="allElems.length>0" v-for="item in allElems">
-    <!-- <p v-if="item.includes(inputText)"> -->
+    <div class="flip-card" v-if="allElements.length" v-for="item in allElements">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <h3 class="list-group-item"> {{ item.name || item.title}} </h3>
+          <li class="list-group-item"> {{ item.name || item.title}} </li>
         </div>
         <div class="flip-card-back">
           <h3>Infos</h3>
+          <ul class="list-group list-group-flush">
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Height : ' + item.height+ " cm"}}</li>
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Gender : ' + item.gender}}</li>
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Eye color : ' + item.eye_color}}</li>
@@ -75,9 +88,10 @@ onUpdated(() => {
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Length : ' + item.length + " m"  }}</li>
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Number of passengers : ' + item.passengers + " peoples" }}</li>
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Manufacturer : ' + item.manufacturer  }}</li>
+            
+          </ul>
         </div>
       </div>
-      <!-- </p> -->
     </div>
   </container>
 </template>
