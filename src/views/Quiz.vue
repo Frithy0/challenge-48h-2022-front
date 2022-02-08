@@ -6,9 +6,9 @@ const questions = [
 
 <template>
 <div class="container">
-    <div style="margin: 0 auto;">
+    <div class="text-center">
         <h2>0/10</h2>
-        <div class="card text-center" style="width: 26rem;">
+        <div class="card text-center center" style="width: 26rem;">
         <div class="card-header">
             Featured
         </div>
@@ -25,5 +25,8 @@ const questions = [
 </template>
 
 <style>
-
+.center {
+    margin-right: auto;
+    margin-left: auto;
+}
 </style>

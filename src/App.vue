@@ -11,4 +11,8 @@ import Navbar from "./components/Navbar.vue";
 #app {
   margin: 0;
 }
+
+body {
+  background-color: #212529 !important;
+}
 </style>
