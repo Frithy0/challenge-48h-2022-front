@@ -16,8 +16,10 @@ export default {
       currentPage = await apiClient.get('/' + item + '/?page=' + i);
       for (const elem of currentPage.data.results) {
         allElements.push(elem)
+        //setStateProp(item, allElements)
       }
-      //setStateProp(item, allElements)
+      console.log('here')
+      
       i++;
     } while (currentPage.data.next);
     return allElements;

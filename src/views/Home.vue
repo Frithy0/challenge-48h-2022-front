@@ -1,5 +1,6 @@
 <script setup>
 import StarwarsService from "../services/module/starwars"
+import apiClient from "../services/http-comon";
 import {onMounted,inject,onUpdated} from 'vue'
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
@@ -17,12 +18,14 @@ onMounted(async () => {
    console.log(allElems);
 })
 
-onUpdated(async () => {
+onUpdated(() => {
   const route = useRoute();
-   const routeName = route.params.name;
-
-  allElems.value = await StarwarsService.getAllElems(routeName)
-   setStateProp(routeName, allElems)
+  const routeName = route.params.name;
+  if (routeName != lastRoute){
+    lastRoute = routeName
+    getAllElems(routeName)
+  }
+  
 })
 
 </script>
