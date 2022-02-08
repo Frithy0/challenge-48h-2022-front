@@ -7,7 +7,7 @@ export default {
     return await apiClient.get('/');
   },
 
-  async getAllElems(item = 'planets') {
+  async getAllElems(item = 'people') {
     let i = 1;
     let allElements = []
     let currentPage

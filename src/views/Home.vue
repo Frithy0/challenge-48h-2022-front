@@ -34,55 +34,119 @@ onUpdated(async () => {
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   
-  <!-- <input v-model="inputText" type="text"> -->
+  <div id="logo"></div>
 
-  <div id="example-1">
-    <div v-if="allElems.length>0" v-for="item in allElems">
-      <div class="card" style="width: 18rem;">
-          <div class="card-header">
-            INFOS
-          </div>
-            <ul class="list-group list-group-flush">
+  <input class="search_bar" v-model="inputText" type="text">
 
-              <li  class="list-group-item"> {{ item.name || item.title}} </li>
-              <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Height : ' + item.height+ " cm"}}</li>
-              <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Gender : ' + item.gender}}</li>
-              <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Eye color : ' + item.eye_color}}</li>
-              <!-- <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Homeworld : ' + item.homeworld.name}}</li> -->
-
-              <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Climate : ' + item.climate}}</li>
-              <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Diameter : ' + item.diameter}}</li>
-              <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Population : ' + item.population + " hab"}}</li>
-              <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Terrain : ' + item.terrain}}</li>
-
-              <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Director : ' + item.director}}</li>
-              <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Producer : ' + item.producer}}</li>
-              <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Release date : ' + item.release_date}}</li>
-              <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Episode number : ' + item.episode_id}}</li>
-              <!-- <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Created : ' + item.created}}</li> -->
-
-              <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Language : ' + item.language}}</li>
-              <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Categorie species : ' + item.classification}}</li>
-              <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Height : ' + item.average_height + ' cm'}}</li>
-              <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Lifespan : ' + item.average_lifespan + ' years'}}</li>
-              
-              <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Capacity : ' + item.cargo_capacity + ' peoples'}}</li>
-              <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Pirce : ' + item.cost_in_credits}}</li>
-              <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Length : ' + item.length + ' m'}}</li>
-              <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Model : ' + item.model  }}</li>
-
-              <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Cargo capacity : ' + item.cargo_capacity + " peoples" }}</li>
-              <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Price : ' + item.cost_in_credits  }}</li>
-              <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Length : ' + item.length + " m"  }}</li>
-              <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Number of passengers : ' + item.passengers + " peoples" }}</li>
-              <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Manufacturer : ' + item.manufacturer  }}</li>
-              
-            </ul>
+  <container class="cont">
+    <div class="flip-card" v-if="allElems.length>0" v-for="item in allElems">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <li class="list-group-item"> {{ item.name || item.title}} </li>
         </div>
+        <div class="flip-card-back">
+          <h3>Infos</h3>
+          <ul class="list-group list-group-flush">
+            <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Height : ' + item.height+ " cm"}}</li>
+            <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Gender : ' + item.gender}}</li>
+            <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Eye color : ' + item.eye_color}}</li>
+            <!-- <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Homeworld : ' + item.homeworld.name}}</li> -->
+
+            <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Climate : ' + item.climate}}</li>
+            <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Diameter : ' + item.diameter}}</li>
+            <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Population : ' + item.population + " hab"}}</li>
+            <li v-if ="$route.params.name =='planets'" class="list-group-item"> {{ 'Terrain : ' + item.terrain}}</li>
+
+            <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Director : ' + item.director}}</li>
+            <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Producer : ' + item.producer}}</li>
+            <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Release date : ' + item.release_date}}</li>
+            <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Episode number : ' + item.episode_id}}</li>
+            <!-- <li v-if ="$route.params.name =='films'" class="list-group-item"> {{ 'Created : ' + item.created}}</li> -->
+
+            <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Language : ' + item.language}}</li>
+            <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Categorie species : ' + item.classification}}</li>
+            <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Height : ' + item.average_height + ' cm'}}</li>
+            <li v-if ="$route.params.name =='species'" class="list-group-item"> {{ 'Lifespan : ' + item.average_lifespan + ' years'}}</li>
+            
+            <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Capacity : ' + item.cargo_capacity + ' peoples'}}</li>
+            <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Pirce : ' + item.cost_in_credits}}</li>
+            <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Length : ' + item.length + ' m'}}</li>
+            <li v-if ="$route.params.name =='vehicles'" class="list-group-item"> {{ 'Model : ' + item.model  }}</li>
+
+            <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Cargo capacity : ' + item.cargo_capacity + " peoples" }}</li>
+            <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Price : ' + item.cost_in_credits  }}</li>
+            <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Length : ' + item.length + " m"  }}</li>
+            <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Number of passengers : ' + item.passengers + " peoples" }}</li>
+            <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Manufacturer : ' + item.manufacturer  }}</li>
+            
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
+  </container>
 </template>
 
 <style>
+
+.search_bar{
+  margin-left: 40%;
+  width: 20%;
+}
+
+#logo{
+  background: url('src/assets/Star_Wars_Logo.png');
+}
+
+.cont{
+  display:flex;
+  width: 80%;
+  justify-content:space-around;
+  flex-wrap: wrap;
+  margin-left: 10%;
+  text-align: center;
+}
+
+.flip-card{
+  flex: 0 0 20%;
+  margin: 5%;
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: white;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: orange;
+  color: black;
+  transform: rotateY(180deg);
+}
+
 
 </style>
