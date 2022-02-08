@@ -52,11 +52,10 @@ onUpdated(() => {
     <div class="flip-card" v-if="allElements.length" v-for="item in allElements">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <li class="list-group-item"> {{ item.name || item.title}} </li>
+          <h3 class="list-group-item"> {{ item.name || item.title}} </h3>
         </div>
         <div class="flip-card-back">
           <h3>Infos</h3>
-          <ul class="list-group list-group-flush">
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Height : ' + item.height+ " cm"}}</li>
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Gender : ' + item.gender}}</li>
             <li v-if ="$route.params.name =='people'" class="list-group-item"> {{ 'Eye color : ' + item.eye_color}}</li>
@@ -88,8 +87,6 @@ onUpdated(() => {
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Length : ' + item.length + " m"  }}</li>
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Number of passengers : ' + item.passengers + " peoples" }}</li>
             <li v-if ="$route.params.name =='starships'" class="list-group-item"> {{ 'Manufacturer : ' + item.manufacturer  }}</li>
-            
-          </ul>
         </div>
       </div>
     </div>
@@ -177,8 +174,18 @@ onUpdated(() => {
   border-radius: 7%;
 }
 
-h3{
-  color: white;
+.flip-card-back .list-group-item {
+  background-color: black;
+  color: #00FFEF;
+  height: auto;
+  border-radius: 7%;
 }
+
+.flip-card-front .list-group-item {
+  color: white;
+  background-color: black;
+}
+
+
 
 </style>
