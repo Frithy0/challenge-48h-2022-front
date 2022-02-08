@@ -19,7 +19,7 @@ onMounted(async () => {
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <router-link :to="'/cat/' + key" v-for="(value, key) in getStateProp('categories')"><a href="#" class="nav-link px-2 link-secondary">{{key.toUpperCase()}}</a></router-link>
+        <a :href="'/cat/' + key" v-for="(value, key) in getStateProp('categories')" class="nav-link px-2 link-secondary">{{key.toUpperCase()}}</a>
       </ul>
 
       <div class="col-md-3 text-end">
