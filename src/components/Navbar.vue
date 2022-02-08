@@ -49,16 +49,12 @@ ul[name="cat_bar"]{
 
 a[name="cat"] {
   font-weight: 500;
-  border: none;
-  border-left: solid;
-  border-radius: 1px;
   border-color:#ffc107;
   transition: ease-in 300ms;
 
 }
 a[name="cat"]:hover {
   border: none;
-  border-left: solid;
   border-radius: 1px;
   border-color:#ffc107;
   background-color:#ffc107;

@@ -1,5 +1,5 @@
 import apiClient from "../http-comon";
-import {inject} from 'vue'
+import { inject } from 'vue'
 //const { state, setStateProp, getStateProp } = inject("state");
 export default {
 
@@ -7,22 +7,21 @@ export default {
     return await apiClient.get('/');
   },
 
-  async getAllElems(item = 'people') {
-    let i = 1;
-    let allElements = []
-    let currentPage
+  async getAnswers(categ, response) {
 
-    do {
-      currentPage = await apiClient.get('/' + item + '/?page=' + i);
-      for (const elem of currentPage.data.results) {
-        allElements.push(elem)
-        //setStateProp(item, allElements)
+    const page = await apiClient.get('/' + categ);
+    const randomName = [response]
+    while (randomName.length < 4) {
+      const name = categ == "films" ? page.data.results[this.random(0, 9)].title : page.data.results[this.random(0, 9)].name;
+      if (!randomName.includes(name)) {
+        randomName.push(name)
       }
-      console.log('here')
-      
-      i++;
-    } while (currentPage.data.next);
-    return allElements;
+    }
+    return randomName.sort(()=> Math.random() - 0.5);
   },
+
+  random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
 };

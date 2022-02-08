@@ -13,6 +13,6 @@ import Navbar from './components/Navbar.vue'
 }
 
 body{
-  background-color: #212529!important;
+  background-color: #202225!important;
 }
 </style>
