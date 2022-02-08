@@ -1,6 +1,6 @@
 import apiClient from "../http-comon";
 import {inject} from 'vue'
-const { state, setStateProp, getStateProp } = inject("state");
+//const { state, setStateProp, getStateProp } = inject("state");
 export default {
 
   async getCategories() {
