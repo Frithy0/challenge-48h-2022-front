@@ -13,7 +13,7 @@ onMounted(async () => {
 <template>
 <div class="container">
 
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <header class="navbar_cadre">
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
       </a>
@@ -32,5 +32,18 @@ onMounted(async () => {
 <style>
 body{
   background: url(src/assets/SWFond.jpg);
+}
+.navbar_cadre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-style: none;
+  border-bottom-style: solid;
+  border-color: #ffc107;
+  border-bottom-width: 3px;
+  border-radius: 2px;
+  padding: 1%;
+  margin: 1%;
 }
 </style>
