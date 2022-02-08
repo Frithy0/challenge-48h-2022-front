@@ -1,2 +1,2 @@
 <?php `git pull`;
-echo "Test 6";
+echo "Test 7";
