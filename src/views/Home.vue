@@ -82,58 +82,11 @@ onUpdated(() => {
           <div class="card-body text-warning">
             <h5 class="card-title">{{ item.name || item.title }}</h5>
             <p class="card-text" v-if="item.display">
-
-          
             <div v-for="(value, key) of item">
               <div v-if="key!='name' && key!='homeworld' && key!='films'&& key!='vehicles'&& key!='starships' && key!='url'&& key!= 'display' && key!='species' && key!='created' && key!='edited' && key!='residents' && key!='people' && key!='pilots'">
                 <p>{{ (key.charAt(0).toUpperCase() + key.slice(1)).replace('_', ' ') + " : " + value   }}</p>
               </div>
             </div>
-              <!-- <li v-if="$route.params.name == 'people'">{{ "Height : " + item.height + " cm" }}</li>
-              <li v-if="$route.params.name == 'people'">{{ "Gender : " + item.gender }}</li>
-              <li v-if="$route.params.name == 'people'">{{ "Eye color : " + item.eye_color }}</li>
-
-              <li v-if="$route.params.name == 'planets'">{{ "Climate : " + item.climate }}</li>
-              <li v-if="$route.params.name == 'planets'">{{ "Diameter : " + item.diameter }}</li>
-              <li
-                v-if="$route.params.name == 'planets'"
-              >{{ "Population : " + item.population + " hab" }}</li>
-              <li v-if="$route.params.name == 'planets'">{{ "Terrain : " + item.terrain }}</li>
-
-              <li v-if="$route.params.name == 'films'">{{ "Director : " + item.director }}</li>
-              <li v-if="$route.params.name == 'films'">{{ "Producer : " + item.producer }}</li>
-              <li v-if="$route.params.name == 'films'">{{ "Release date : " + item.release_date }}</li>
-              <li v-if="$route.params.name == 'films'">{{ "Episode number : " + item.episode_id }}</li>
-
-              <li v-if="$route.params.name == 'species'">{{ "Language : " + item.language }}</li>
-              <li
-                v-if="$route.params.name == 'species'"
-              >{{ "Categorie species : " + item.classification }}</li>
-              <li
-                v-if="$route.params.name == 'species'"
-              >{{ "Height : " + item.average_height + " cm" }}</li>
-              <li
-                v-if="$route.params.name == 'species'"
-              >{{ "Lifespan : " + item.average_lifespan + " years" }}</li>
-
-              <li
-                v-if="$route.params.name == 'vehicles'"
-              >{{ "Capacity : " + item.cargo_capacity + " peoples" }}</li>
-              <li v-if="$route.params.name == 'vehicles'">{{ "Pirce : " + item.cost_in_credits }}</li>
-              <li v-if="$route.params.name == 'vehicles'">{{ "Length : " + item.length + " m" }}</li>
-              <li v-if="$route.params.name == 'vehicles'">{{ "Model : " + item.model }}</li>
-
-              <li
-                v-if="$route.params.name == 'starships'"
-              >{{ "Cargo capacity : " + item.cargo_capacity + " peoples" }}</li>
-              <li v-if="$route.params.name == 'starships'">{{ "Price : " + item.cost_in_credits }}</li>
-              <li v-if="$route.params.name == 'starships'">{{ "Length : " + item.length + " m" }}</li>
-              <li
-                v-if="$route.params.name == 'starships'"
-              >{{ "Number of passengers : " + item.passengers + " peoples" }}</li>
-              <li
-                v-if="$route.params.name == 'starships'"
-              >{{ "Manufacturer : " + item.manufacturer }}</li> -->
             </p>
           </div>
           <div class="card-footer bg-transparent border-dark">
