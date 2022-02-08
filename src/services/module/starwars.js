@@ -1,4 +1,6 @@
 import apiClient from "../http-comon";
+import {inject} from 'vue'
+const { state, setStateProp, getStateProp } = inject("state");
 export default {
 
   async getCategories() {
@@ -15,6 +17,7 @@ export default {
       for (const elem of currentPage.data.results) {
         allElements.push(elem)
       }
+      //setStateProp(item, allElements)
       i++;
     } while (currentPage.data.next);
     return allElements;
