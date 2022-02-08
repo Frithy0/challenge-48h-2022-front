@@ -13,6 +13,6 @@ import Navbar from './components/Navbar.vue'
 }
 
 body{
-  background: url(src/assets/SWFond.jpg);
+  background-color: #212529!important;
 }
 </style>

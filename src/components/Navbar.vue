@@ -30,9 +30,6 @@ onMounted(async () => {
 </template>
 
 <style>
-body{
-  background: url(src/assets/SWFond.jpg);
-}
 .navbar_cadre {
   display: flex;
   flex-wrap: wrap;
