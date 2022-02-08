@@ -4,11 +4,6 @@ import Quiz from '/src/views/Quiz.vue'
 
 const routes = [
     {
-        path: '/',
-        name: 'Home',
-        component: Home,
-    },
-    {
         path: '/cat/:name',
         name: 'Categorie',
         component: Home,
@@ -18,8 +13,10 @@ const routes = [
         name: 'Quiz',
         component: Quiz,
     },
-
-
+    {
+        path: "/:pathMatch(.*)*",
+        redirect: '/cat/people'
+    }
 ];
 
 const router = createRouter({

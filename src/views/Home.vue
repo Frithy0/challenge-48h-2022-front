@@ -8,7 +8,7 @@ const { state, setStateProp, getStateProp } = inject("state");
 const inputText = ref("");
 const route = useRoute();
 const routeName = route.params.name;
-let lastRoute = routeName || 'people'
+let lastRoute = routeName 
 let allElements = ref([])
 
 async function getAllElems(item) {
@@ -25,6 +25,7 @@ async function getAllElems(item) {
 }
 
 onMounted(() => {
+  console.log
   getAllElems(lastRoute)
 })
 
