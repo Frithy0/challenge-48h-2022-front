@@ -4,7 +4,7 @@ import StarwarsService from "../services/module/starwars"
 const questions = ref([
     {
         question: "Which species from Endor, helped the rebellion destroy the second death star ?",
-        response: "Wookies",
+        response: "Wookie",
         categorie: "species",
         userResponse: null
     },
@@ -40,7 +40,7 @@ const questions = ref([
     },
     {
         question: "What species does Jar Jar Binks belong to?",
-        response: 'Gungans',
+        response: 'Gungan',
         categorie: "species",
         userResponse: null
     },
@@ -51,14 +51,14 @@ const questions = ref([
         userResponse: null
     },
     {
-        question: "What's the name of Boba Fett's starship ?",
-        response: 'Esclave I ',
+        question: "What's the name of the rebels starship ?",
+        response: 'X-wing',
         categorie: "starships",
         userResponse: null
     },
     {
-        question: "What's the name of Han Solo's starship ?",
-        response: 'Faucon Millenium',
+        question: "What's the name of Han Solo's starships ?",
+        response: 'Millennium Falcon',
         categorie: "starships",
         userResponse: null
     }
@@ -72,18 +72,18 @@ function answer(answer) {
 }
 
 async function findFakeAnswer() {
-    answers.value = await StarwarsService.getAnswers('people', questions.value[currentQuestion.value].response)
+    answers.value = await StarwarsService.getAnswers(questions.value[currentQuestion.value].categorie, questions.value[currentQuestion.value].response)
 }
 
 function next() {
+    if (questions.value[currentQuestion.value].response == questions.value[currentQuestion.value].userResponse) {
+        winCounter.value++
+    }
 
     if (currentQuestion.value == questions.value.length - 1) {
         return endgame.value = true
     }
 
-    if (questions.value[currentQuestion.value].response == questions.value[currentQuestion.value].userResponse) {
-        winCounter.value++
-    }
     currentQuestion.value++
     answers.value = []
     findFakeAnswer()
@@ -96,7 +96,7 @@ findFakeAnswer()
 <template>
     <div class="container">
         <div v-if="!endgame" class="text-center">
-            <h2 style="color: white">{{ currentQuestion }}/{{ questions.length }}</h2>
+            <h2 style="color: white">{{ currentQuestion + 1 }}/{{ questions.length }}</h2>
             <div class="card text-center center" style="width: 26rem;">
                 <div class="card-header">{{ questions[currentQuestion].question }}</div>
                 <ul class="list-group list-group-flush">

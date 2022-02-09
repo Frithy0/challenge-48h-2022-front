@@ -23,7 +23,7 @@ onMounted(async () => {
       </ul>
 
       <div class="col-md-3 text-end">
-        <router-link :to="'/quiz'"> <a href="#" class="btn btn-outline-primary me-2" name="quiz_button"> Quiz </a></router-link>
+        <router-link :to="'/quiz'"> <a href="#" class="btn btn-sm btn-outline-warning me-2 pt-0 pb-0" name="quiz_button"> Quiz </a></router-link>
       </div>
     </header>
     </div>
