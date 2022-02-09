@@ -63,6 +63,7 @@ onUpdated(() => {
         "
         class="form-control"
         v-model="inputText"
+        placeholder="Search..."
         type="text"
       />
     </div>
