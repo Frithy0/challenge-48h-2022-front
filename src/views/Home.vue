@@ -84,7 +84,7 @@ onUpdated(() => {
             <h5 class="card-title">{{ item.name || item.title }}</h5>
             <p class="card-text" v-if="item.display">
             <div v-for="(value, key) of item">
-              <div v-if="key!='name' && key!='homeworld' && key!='films'&& key!='vehicles'&& key!='starships' && key!='url'&& key!= 'display' && key!='species' && key!='created' && key!='edited' && key!='residents' && key!='people' && key!='pilots'">
+              <div v-if="key!='name' && key!='homeworld' && key!='films'&& key!='vehicles'&& key!='starships' && key!='url'&& key!= 'display' && key!='species' && key!='created' && key!='edited' && key!='residents' && key!='people' && key!='pilots' && key!='characters' && key!='planets'">
                 <p>{{ (key.charAt(0).toUpperCase() + key.slice(1)).replace('_', ' ') + " : " + value   }}</p>
               </div>
             </div>
